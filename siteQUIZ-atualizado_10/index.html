@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14287a">
+<title>Truque Elétrica Lucrativa | Avaliação personalizada</title>
+<link rel="preload" as="image" href="img/intro.webp">
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#0f1f4d;--mut:#55627a;--line:#cfd9ec;--blue:#1f3bb0;--blue-d:#14287a;--blue-l:#eaf0ff;--y:#ffc400;--y-d:#f0b400}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;min-height:100vh;min-height:100dvh}
+[hidden]{display:none!important}
+.band{background:linear-gradient(135deg,#0f1f4d,#1e3a8a);display:flex;justify-content:center;padding:12px 16px}
+.band img{height:78px;width:auto!important;display:block}
+.wrap{max-width:520px;margin:0 auto;padding:20px 18px 40px}
+#s-intro .photo{margin:16px 0 18px}
+.photo{display:block;width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;object-position:50% 25%;border-radius:18px;border:1px solid var(--line);background:#fff;box-shadow:0 10px 28px rgba(20,40,122,.12)}
+h1{margin:18px 0 8px;font-size:1.32rem;line-height:1.22;font-weight:900;text-transform:uppercase;letter-spacing:-.005em;color:var(--blue-d)}
+.mech{display:inline-block;margin:0 0 12px;padding:6px 12px;border-radius:8px;background:var(--y);color:var(--ink);font-weight:900;font-size:.95rem;text-transform:uppercase}
+.sub{margin:0 0 20px;color:var(--mut);font-size:1.02rem}
+.btn{display:block;width:100%;min-height:58px;padding:15px 18px;border:0;border-radius:14px;background:var(--y);color:var(--ink);font:inherit;font-weight:900;font-size:1.04rem;text-align:center;text-decoration:none;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 22px rgba(240,180,0,.35);transition:transform .15s,background .2s,opacity .2s}
+.btn:active{transform:scale(.98)}
+@media(hover:hover){.btn:hover{background:var(--y-d)}}
+.btn:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
+.pulse{animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 22px rgba(240,180,0,.3)}50%{box-shadow:0 8px 32px rgba(240,180,0,.65)}}
+.note{margin:14px 0 0;text-align:center;font-size:.78rem;color:var(--mut)}
+.top{padding:2px 0 14px}
+.row{display:flex;justify-content:space-between;align-items:center;font-size:.9rem;font-weight:700;color:var(--mut);margin-bottom:8px}
+.row b{color:var(--blue)}
+.bar{height:10px;border-radius:99px;background:#dde5f5;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--y-d),var(--y));transition:width .45s ease}
+.qimg{display:block;width:auto;height:auto;max-width:100%;max-height:190px;object-fit:contain;border-radius:16px;border:1px solid var(--line);margin:0 auto 16px}
+.qimg.wide{width:100%;max-width:400px;max-height:none}
+.qimg.full{max-height:200px}
+.q{margin:4px 0 6px;font-size:1.32rem;line-height:1.25;font-weight:900;color:var(--blue-d);outline:none}
+.q.up{text-transform:uppercase;font-size:1.2rem}
+.hint{margin:0 0 16px;color:var(--mut);font-size:.95rem}
+.opt{display:flex;align-items:center;gap:14px;width:100%;min-height:64px;margin:0 0 11px;padding:14px 16px;text-align:left;font:inherit;font-weight:600;font-size:1.02rem;line-height:1.3;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:14px;cursor:pointer;transition:border-color .2s,background .2s,transform .12s}
+.opt::before{content:"";flex:none;width:24px;height:24px;border-radius:50%;border:2px solid #9fb0d3;transition:all .2s}
+.opt:active{transform:scale(.985)}
+@media(hover:hover){.opt:hover{border-color:var(--blue)}}
+.opt[aria-pressed="true"]{border-color:var(--blue);background:var(--blue-l);box-shadow:0 0 0 3px rgba(31,59,176,.14)}
+.opt[aria-pressed="true"]::before{border-color:var(--blue);background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L19 7'/%3E%3C/svg%3E") center/70% no-repeat}
+.nav{display:flex;gap:10px;margin-top:8px}
+.back{flex:0 0 auto;min-height:58px;padding:0 20px;border-radius:14px;background:#fff;color:var(--blue-d);border:2px solid var(--line);font:inherit;font-weight:800;cursor:pointer}
+.nav .btn{flex:1}
+.in-f{animation:inf .35s ease both}.in-b{animation:inb .35s ease both}
+@keyframes inf{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+@keyframes inb{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
+.load{text-align:center;padding:70px 0 30px}
+.spin{width:64px;height:64px;margin:0 auto 22px;border-radius:50%;border:5px solid #dde5f5;border-top-color:var(--blue);animation:spin .85s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.load h2{margin:0 0 8px;font-size:1.25rem;color:var(--blue-d);outline:none}
+.load p{margin:0;color:var(--mut)}
+.res{animation:inf .5s ease both}
+.badge{display:inline-block;padding:6px 14px;border-radius:99px;background:var(--blue);color:#fff;font-weight:800;font-size:.82rem}
+.you{margin:14px 0;padding:14px 16px;border-radius:14px;background:var(--blue-l);border:2px solid var(--blue);font-weight:600}
+.box{margin:16px 0;padding:18px 16px;border-radius:16px;background:var(--card);border:1px solid var(--line);box-shadow:0 8px 22px rgba(20,40,122,.08)}
+.box h2{margin:0 0 12px;font-size:1.05rem;text-transform:uppercase;color:var(--blue-d)}
+.steps{list-style:none;margin:0;padding:0}
+.steps li{display:flex;gap:12px;padding:10px 12px;margin:0 0 8px;border-radius:12px;border:2px solid var(--line);font-size:.95rem}
+.steps li b{display:block;color:var(--blue-d)}
+.steps li.here{border-color:var(--y-d);background:#fff8dc}
+.steps li span.n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.steps em{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:99px;background:var(--y);font-style:normal;font-size:.72rem;font-weight:800}
+.prod{display:flex;align-items:center;gap:14px;margin:0 0 12px}
+.prod img{flex:none;width:110px;height:auto;border-radius:12px;background:linear-gradient(135deg,#0f1f4d,#1e3a8a);padding:6px}
+.prod h2{margin:0}
+.ben{list-style:none;margin:0;padding:0}
+.ben li{position:relative;padding:6px 0 6px 28px}
+.ben li::before{content:"";position:absolute;left:0;top:9px;width:18px;height:18px;border-radius:50%;background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L19 7'/%3E%3C/svg%3E") center/70% no-repeat}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+@media(min-width:640px){h1{font-size:1.6rem}.q{font-size:1.5rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1509660471210296');fbq('track','PageView');</script>
+</head>
+<body>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1509660471210296&ev=PageView&noscript=1"></noscript>
+<div class="band"><img src="img/logo-eletrica-lucrativa.webp" alt="Elétrica Lucrativa" width="698" height="550"></div>
+<main class="wrap">
+
+<section id="s-intro">
+<h1 id="intro-h" tabindex="-1">Descubra como alcançar de R$ 8 mil a R$ 13 mil por mês com elétrica residencial!</h1>
+<p class="sub">Conheça o Truque Elétrica Lucrativa e descubra o caminho para começar nessa profissão, mesmo sem experiência!</p>
+<img class="photo" src="img/intro.webp" alt="Eletricista sorrindo enquanto trabalha em um quadro de distribuição" width="720" height="480" fetchpriority="high">
+<button type="button" class="btn pulse" id="start">Personalizar meu caminho</button>
+</section>
+
+<section id="s-quiz" hidden>
+<div class="top">
+<div class="row"><span id="step">Pergunta 1 de 7</span><b id="pct">0%</b></div>
+<div class="bar" id="bar" role="progressbar" aria-label="Progresso da avaliação" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="fill"></i></div>
+</div>
+<div id="stage"></div>
+<div class="nav">
+<button type="button" class="back" id="back">← Voltar</button>
+<button type="button" class="btn" id="next" disabled>Continuar</button>
+</div>
+</section>
+
+<section id="s-load" class="load" hidden>
+<div class="spin" aria-hidden="true"></div>
+<h2 id="load-h" tabindex="-1">Montando seu plano de aprendizado…</h2>
+<p>Aplicando o Truque Elétrica Lucrativa às suas respostas.</p>
+</section>
+
+<section id="s-res" class="res" hidden>
+<span class="badge" id="r-badge"></span>
+<h1 id="res-h" tabindex="-1">Seu caminho para começar na Elétrica Lucrativa!</h1>
+<p class="sub">Com base nas suas respostas, identificamos seu ponto de partida. Agora você pode conhecer uma maneira organizada de desenvolver seus conhecimentos em elétrica residencial.</p>
+<div class="you" id="r-you"></div>
+<div class="box">
+<h2>Truque Elétrica Lucrativa</h2>
+<ol class="steps" id="r-steps"></ol>
+</div>
+<div class="box">
+<div class="prod"><img src="img/logo-eletrica-lucrativa.webp" alt="Elétrica Lucrativa" width="698" height="550"><h2>Guia Elétrica Lucrativa</h2></div>
+<ul class="ben">
+<li>Aprender os fundamentos da elétrica residencial.</li>
+<li>Conhecer os principais componentes.</li>
+<li>Entender melhor as instalações elétricas.</li>
+<li>Ter uma sequência organizada de aprendizado.</li>
+<li>Desenvolver conhecimentos que podem abrir oportunidades profissionais.</li>
+</ul>
+</div>
+<a class="btn pulse" id="go" href="vendas.html">Quero conhecer o Guia Elétrica Lucrativa</a>
+</section>
+</main>
+<noscript><p class="note"><a href="vendas.html">Clique aqui para conhecer o Guia Elétrica Lucrativa</a></p></noscript>
+<script>
+(function(){
+/* ===== CONFIGURAÇÃO: troque aqui o link da sua página de vendas ===== */
+var SALES_URL="vendas.html";
+/* =================================================================== */
+
+var Q=[
+{t:"Qual é o seu nível de experiência com elétrica residencial?",up:1,h:"Selecione uma opção para personalizarmos seu plano de aprendizado.",img:"img/q1.webp",w:478,h2:507,o:["Nunca tive contato com elétrica.","Sou iniciante, mas tenho muita vontade de aprender.","Já conheço alguns fundamentos.","Já tenho experiência e quero evoluir."]},
+{t:"Se você pudesse desenvolver uma habilidade que pode abrir novas oportunidades de renda, qual seria seu maior objetivo?",img:"img/q2.webp",w:548,h2:507,full:1,o:["Ter uma nova fonte de renda.","Trabalhar por conta própria.","Ter uma profissão valorizada.","Conquistar mais liberdade financeira."]},
+{t:"O que mais impede você de começar a aprender elétrica residencial hoje?",img:"img/q3.webp",w:502,h2:507,o:["Não sei por onde começar.","Tenho medo de não entender a parte técnica.","Acho que preciso de experiência.","Não encontrei um material realmente organizado."]},
+{t:"O que você acha de aprender elétrica por etapas, começando pelos fundamentos e avançando gradualmente?",h:"É assim que funciona o Truque Elétrica Lucrativa: uma etapa de cada vez.",img:"img/q4.webp",w:488,h2:507,full:1,o:["Seria muito melhor para mim.","Assim conseguiria entender com mais facilidade.","É exatamente o tipo de aprendizado que procuro.","Ainda tenho receio de não conseguir."]},
+{t:"Imagine conseguir compreender uma instalação elétrica residencial e identificar os principais componentes de um quadro de distribuição. O que isso representaria para você?",img:"img/q5.webp",w:720,h2:450,wide:1,o:["Uma oportunidade de trabalhar na área.","Mais confiança para desenvolver uma profissão.","Uma possibilidade de aumentar minha renda.","A realização de aprender algo novo."]},
+{t:"Se você continuar adiando esse aprendizado pelos próximos 6 meses, como acha que estará?",o:["No mesmo lugar, sem começar.","Ainda procurando uma oportunidade.","Arrependido por não ter tentado.","Quero aproveitar a oportunidade agora."]},
+{t:"Se você tivesse um guia prático para aprender elétrica residencial passo a passo, estaria disposto a dar o primeiro passo hoje?",o:["Sim, quero começar agora!","Sim, estou procurando uma oportunidade.","Gostaria de conhecer melhor.","Ainda tenho algumas dúvidas."]}
+];
+/* resultado personalizado pela resposta da pergunta 1 */
+var LV=[
+{b:"Seu ponto de partida: do zero",y:"Você está começando do zero, e tudo bem. O caminho organizado começa pelos fundamentos, sem pular etapas.",s:0},
+{b:"Seu ponto de partida: iniciante com vontade",y:"Você já tem a vontade, que é o principal. Falta uma sequência clara para transformar essa vontade em conhecimento.",s:0},
+{b:"Seu ponto de partida: já conhece fundamentos",y:"Você já conhece alguns fundamentos. Agora o foco é conhecer melhor os componentes e as instalações.",s:1},
+{b:"Seu ponto de partida: já tem experiência",y:"Você já tem experiência. O foco é organizar o que sabe e avançar com mais método.",s:3}
+];
+var ST=[["Preparação","Entender os fundamentos."],["Planejamento","Conhecer os componentes e instalações."],["Prática orientada","Aprender os conceitos e procedimentos."],["Progressão","Avançar gradualmente no conhecimento."]];
+
+var N=Q.length,i=0,ans=[],dir="f",busy=false;
+function $(id){return document.getElementById(id)}
+function sget(k){try{return sessionStorage.getItem(k)}catch(e){return null}}
+function sset(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}
+
+/* medição (painel) */
+var qs=new URLSearchParams(location.search);
+var SRC=qs.get("utm_campaign")||qs.get("utm_source")||"direto";
+sset("qz_src",SRC);
+var seen={};try{seen=JSON.parse(sget("qz_t")||"{}")}catch(e){}
+function send(e){
+  var b=JSON.stringify({e:e,s:SRC});
+  try{
+    if(!(navigator.sendBeacon&&navigator.sendBeacon("/api/t",new Blob([b],{type:"application/json"})))){
+      fetch("/api/t",{method:"POST",headers:{"Content-Type":"application/json"},body:b,keepalive:true});
+    }
+  }catch(x){}
+}
+function track(e){if(seen[e])return;seen[e]=1;sset("qz_t",JSON.stringify(seen));send(e)}
+
+var S={intro:$("s-intro"),quiz:$("s-quiz"),load:$("s-load"),res:$("s-res")};
+var stage=$("stage"),step=$("step"),pct=$("pct"),bar=$("bar"),fill=$("fill"),back=$("back"),next=$("next");
+function show(n){for(var k in S)S[k].hidden=(k!==n);window.scrollTo(0,0)}
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt)e.textContent=txt;return e}
+function progress(done){var p=Math.round(done/N*100);fill.style.width=p+"%";pct.textContent=p+"%";bar.setAttribute("aria-valuenow",p)}
+
+function render(focus){
+  var q=Q[i];
+  step.textContent="Pergunta "+(i+1)+" de "+N;
+  progress(i+1);
+  stage.className="";stage.innerHTML="";
+  if(q.img){var im=el("img","qimg"+(q.full?" full":"")+(q.wide?" wide":""));im.src=q.img;im.alt="";im.width=q.w;im.height=q.h2;im.decoding="async";stage.appendChild(im)}
+  if(Q[i+1]&&Q[i+1].img){var pn=new Image();pn.src=Q[i+1].img}
+  var h=el("h2","q"+(q.up?" up":""),q.t);h.tabIndex=-1;stage.appendChild(h);
+  if(q.h)stage.appendChild(el("p","hint",q.h));
+  q.o.forEach(function(txt,k){
+    var b=el("button","opt",txt);b.type="button";
+    b.setAttribute("aria-pressed",ans[i]===k?"true":"false");
+    b.addEventListener("click",function(){choose(k)});
+    stage.appendChild(b);
+  });
+  void stage.offsetWidth;
+  stage.className=dir==="b"?"in-b":"in-f";
+  next.disabled=(ans[i]===undefined);
+  next.textContent=(i===N-1)?"Ver meu resultado":"Continuar";
+  if(focus)h.focus({preventScroll:true});
+}
+function choose(k){
+  if(busy)return;
+  ans[i]=k;
+  var all=stage.querySelectorAll(".opt");
+  for(var j=0;j<all.length;j++)all[j].setAttribute("aria-pressed",j===k?"true":"false");
+  next.disabled=false;
+  try{if(navigator.vibrate)navigator.vibrate(8)}catch(e){}
+  if(!seen["a_"+(i+1)]){track("ans_"+(i+1)+"_"+k);track("a_"+(i+1))}
+}
+function advance(){
+  if(ans[i]===undefined||busy)return;
+  if(i===N-1){finish();return}
+  i++;dir="f";render(true);
+}
+function goBack(){
+  if(busy)return;
+  if(i===0){show("intro");return}
+  i--;dir="b";render(true);
+}
+function destino(){
+  var u=SALES_URL;
+  return u.indexOf("?")>-1?u:u+location.search;
+}
+function buildResult(){
+  var L=LV[ans[0]===undefined?0:ans[0]];
+  $("r-badge").textContent=L.b;
+  $("r-you").textContent=L.y;
+  var ol=$("r-steps");ol.innerHTML="";
+  ST.forEach(function(s,k){
+    var li=el("li",k===L.s?"here":"");
+    li.appendChild(el("span","n",String(k+1)));
+    var d=el("div");var b=el("b",null,s[0]);
+    if(k===L.s)b.appendChild(el("em",null,"Você começa aqui"));
+    d.appendChild(b);d.appendChild(document.createTextNode(s[1]));
+    li.appendChild(d);ol.appendChild(li);
+  });
+  $("go").setAttribute("href",destino());
+}
+function finish(){
+  if(busy)return;busy=true;
+  sset("qz_done","1");progress(N);
+  buildResult();
+  show("load");$("load-h").focus({preventScroll:true});
+  setTimeout(function(){show("res");$("res-h").focus({preventScroll:true});busy=false},2000);
+}
+$("start").addEventListener("click",function(){i=0;dir="f";show("quiz");render(true)});
+next.addEventListener("click",advance);
+back.addEventListener("click",goBack);
+track("view");
+})();
+</script>
+</body>
+</html>

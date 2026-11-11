@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Painel do quiz</title>
+<style>
+:root{--azul:#2a4bd0;--esc:#1e3a8a;--cl:#eff6ff;--borda:#bfdbfe;--txt:#475569;--verm:#c1201f;--ok:#16a34a}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",Roboto,Arial,sans-serif;background:#f8fafc;color:var(--txt);line-height:1.5}
+header{background:linear-gradient(135deg,#0f1f4d,#1e3a8a);color:#fff;padding:16px}
+header h1{margin:0;font-size:1.2rem}
+header p{margin:2px 0 0;opacity:.8;font-size:.85rem}
+main{max-width:980px;margin:0 auto;padding:18px 14px 50px}
+.login{max-width:360px;margin:60px auto;background:#fff;border:1px solid var(--borda);border-radius:14px;padding:22px;text-align:center}
+.login input{width:100%;padding:12px;border:2px solid var(--borda);border-radius:10px;font:inherit;margin:12px 0}
+button,select{font:inherit}
+.btn{background:var(--azul);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}
+.erro{color:var(--verm);font-weight:600;min-height:1.3em}
+.barra{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.barra select{padding:9px 10px;border:2px solid var(--borda);border-radius:10px;background:#fff;color:var(--esc);font-weight:600}
+.barra .sp{flex:1}
+.mini{background:#fff;color:var(--esc);border:2px solid var(--borda);border-radius:10px;padding:9px 14px;font-weight:700;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:18px}
+.card{background:#fff;border:1px solid var(--borda);border-radius:14px;padding:14px 16px;box-shadow:0 4px 14px rgba(30,58,138,.06)}
+.card small{display:block;color:var(--txt);font-weight:600}
+.card b{display:block;font-size:1.9rem;line-height:1.2;color:var(--esc)}
+.card em{font-style:normal;font-size:.82rem;color:var(--txt)}
+h2{font-size:1.05rem;color:var(--esc);text-transform:uppercase;margin:26px 0 10px}
+.box{background:#fff;border:1px solid var(--borda);border-radius:14px;padding:6px 14px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th,td{padding:10px 8px;text-align:left;border-bottom:1px solid #e2e8f0;font-size:.92rem}
+th{color:var(--esc);font-size:.78rem;text-transform:uppercase;letter-spacing:.03em}
+td.n,th.n{text-align:right;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.bar{height:10px;border-radius:99px;background:#dbeafe;min-width:90px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--azul),#5b7cf0)}
+.perda{color:var(--verm);font-weight:700}
+.pior{background:#fff1f2}
+.dica{background:#fff;border:1px solid var(--borda);border-left:5px solid var(--azul);border-radius:10px;padding:12px 14px;margin:14px 0;color:#1f2937}
+.perg{margin-bottom:12px}
+.perg h3{margin:0 0 6px;font-size:.95rem;color:#0f172a}
+.op{display:grid;grid-template-columns:minmax(120px,1.4fr) 3fr 58px;gap:10px;align-items:center;padding:3px 0;font-size:.88rem}
+.op .bar{height:12px}
+.vazio{color:#94a3b8;text-align:center;padding:20px}
+</style>
+</head>
+<body>
+<header><h1>Painel do quiz</h1><p>Quantas pessoas passam em cada etapa</p></header>
+<main>
+<div id="login" class="login" hidden>
+<b>Digite a senha do painel</b>
+<input id="senha" type="password" autocomplete="current-password" placeholder="Senha">
+<button class="btn" id="entrar">Entrar</button>
+<div class="erro" id="erro"></div>
+</div>
+
+<div id="app" hidden>
+<div class="barra">
+<select id="dias" aria-label="Período">
+<option value="1">Hoje</option>
+<option value="7" selected>Últimos 7 dias</option>
+<option value="30">Últimos 30 dias</option>
+<option value="90">Últimos 90 dias</option>
+</select>
+<select id="src" aria-label="Origem"><option value="all">Todas as origens</option></select>
+<span class="sp"></span>
+<span id="hora" style="font-size:.82rem"></span>
+<button class="mini" id="atualizar">Atualizar</button>
+<button class="mini" id="sair">Sair</button>
+</div>
+<div class="erro" id="erro2"></div>
+<div class="cards" id="cards"></div>
+<div id="dica"></div>
+<h2>Funil, etapa por etapa</h2>
+<div class="box"><table id="funil"></table></div>
+<h2>O que as pessoas responderam</h2>
+<div id="resp"></div>
+<h2>Por dia</h2>
+<div class="box"><table id="dia"></table></div>
+</div>
+</main>
+<script>
+var Q=[
+{t:"1. Nível de experiência",o:["Nunca tive contato","Iniciante com vontade","Conheço fundamentos","Já tenho experiência"]},
+{t:"2. Maior objetivo",o:["Nova fonte de renda","Trabalhar por conta própria","Profissão valorizada","Liberdade financeira"]},
+{t:"3. O que impede de começar",o:["Não sei por onde começar","Medo da parte técnica","Acho que preciso de experiência","Falta material organizado"]},
+{t:"4. Aprender por etapas",o:["Seria muito melhor","Entenderia com mais facilidade","Exatamente o que procuro","Receio de não conseguir"]},
+{t:"5. O que representaria",o:["Trabalhar na área","Mais confiança na profissão","Aumentar a renda","Aprender algo novo"]},
+{t:"6. Adiar por 6 meses",o:["No mesmo lugar","Ainda procurando","Arrependido","Quero aproveitar agora"]},
+{t:"7. Dar o primeiro passo hoje",o:["Sim, quero agora","Sim, procuro oportunidade","Quero conhecer melhor","Ainda tenho dúvidas"]}
+];
+var ETAPAS=[
+["view","Abriram o quiz"],
+["a_1","Responderam a pergunta 1"],["a_2","Responderam a pergunta 2"],["a_3","Responderam a pergunta 3"],
+["a_4","Responderam a pergunta 4"],["a_5","Responderam a pergunta 5"],["a_6","Responderam a pergunta 6"],
+["a_7","Terminaram o quiz (pergunta 7)"],
+["sales_view","Chegaram na página de vendas"],["buy_click","Clicaram em comprar"]
+];
+function $(id){return document.getElementById(id)}
+function n(v){return (v||0).toLocaleString("pt-BR")}
+function pc(a,b){return b>0?(a/b*100).toFixed(1).replace(".",",")+"%":"–"}
+function pass(){try{return sessionStorage.getItem("painel_senha")||""}catch(e){return ""}}
+var timer=null;
+
+function login(){
+  var s=$("senha").value;if(!s)return;
+  try{sessionStorage.setItem("painel_senha",s)}catch(e){}
+  carregar();
+}
+function sair(){try{sessionStorage.removeItem("painel_senha")}catch(e){}clearInterval(timer);$("app").hidden=true;$("login").hidden=false;$("senha").value=""}
+
+function carregar(){
+  var s=pass();
+  if(!s){$("login").hidden=false;$("app").hidden=true;return}
+  var url="/api/stats?days="+$("dias").value+"&src="+encodeURIComponent($("src").value);
+  fetch(url,{headers:{"x-painel-senha":s},cache:"no-store"}).then(function(r){return r.json().then(function(j){return{st:r.status,j:j}})})
+  .then(function(x){
+    if(x.st===401){sair();$("erro").textContent="Senha incorreta.";$("login").hidden=false;return}
+    if(!x.j.ok){$("login").hidden=true;$("app").hidden=false;$("erro2").textContent=x.j.erro||"Erro ao carregar.";return}
+    $("erro").textContent="";$("erro2").textContent="";
+    $("login").hidden=true;$("app").hidden=false;
+    desenhar(x.j);
+    $("hora").textContent="Atualizado às "+new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});
+    clearInterval(timer);timer=setInterval(carregar,60000);
+  }).catch(function(){$("login").hidden=!!pass();$("erro2").textContent="Sem conexão. Tentando de novo em instantes."});
+}
+
+function desenhar(d){
+  var sel=$("src"),atual=sel.value;
+  if(sel.options.length-1!==d.sources.length){
+    sel.innerHTML='<option value="all">Todas as origens</option>'+d.sources.map(function(s){return '<option value="'+esc(s)+'">'+esc(s)+'</option>'}).join("");
+    sel.value=d.sources.indexOf(atual)>-1?atual:"all";
+  }
+  var T={};
+  d.days.forEach(function(r){for(var k in r.c)T[k]=(T[k]||0)+r.c[k]});
+  var v=T.view||0,fim=T.a_7||0,sv=T.sales_view||0,bc=T.buy_click||0;
+
+  $("cards").innerHTML=
+   card("Abriram o quiz",n(v),"pessoas")+
+   card("Terminaram o quiz",pc(fim,v),n(fim)+" de "+n(v))+
+   card("Viram a página de vendas",n(sv),pc(sv,fim)+" de quem terminou")+
+   card("Clicaram em comprar",n(bc),pc(bc,sv)+" de quem viu a venda");
+
+  /* funil */
+  var rows="",prev=null,pior=-1,piorPerda=0,linhas=[];
+  ETAPAS.forEach(function(e,i){
+    var c=T[e[0]]||0,perda=prev!==null&&prev>0?(prev-c)/prev:0;
+    linhas.push({k:e[0],nome:e[1],c:c,perda:perda,prev:prev});
+    if(i>0&&i<=7&&perda>piorPerda&&prev>0){piorPerda=perda;pior=i}
+    prev=c;
+  });
+  rows='<tr><th>Etapa</th><th class="n">Pessoas</th><th class="n">% da etapa anterior</th><th class="n">% do início</th><th>Funil</th><th class="n">Saíram aqui</th></tr>';
+  linhas.forEach(function(l,i){
+    var ini=pc(l.c,v), ant=l.prev===null?"–":pc(l.c,l.prev);
+    var larg=v>0?Math.min(100,l.c/v*100):0;
+    var saiu=(l.prev===null||l.prev===0||l.prev-l.c<=0)?"–":'<span class="perda">−'+n(l.prev-l.c)+" ("+(l.perda*100).toFixed(0)+"%)</span>";
+    rows+='<tr'+(i===pior?' class="pior"':'')+'><td>'+esc(l.nome)+'</td><td class="n"><b>'+n(l.c)+'</b></td><td class="n">'+ant+'</td><td class="n">'+ini+'</td><td><div class="bar"><i style="width:'+larg+'%"></i></div></td><td class="n">'+saiu+'</td></tr>';
+  });
+  $("funil").innerHTML=rows;
+  $("dica").innerHTML=(pior>0&&piorPerda>0)?
+   '<div class="dica"><b>Onde mais gente sai:</b> entre "'+esc(linhas[pior-1].nome)+'" e "'+esc(linhas[pior].nome)+'" — saem '+(piorPerda*100).toFixed(0)+'% das pessoas (linha destacada). Se o número de pessoas ainda é pequeno, espere juntar mais visitas antes de mudar algo.</div>':"";
+
+  /* respostas */
+  var h="";
+  Q.forEach(function(q,qi){
+    var tot=0,c=[];
+    q.o.forEach(function(_,oi){var x=T["ans_"+(qi+1)+"_"+oi]||0;c.push(x);tot+=x});
+    h+='<div class="box perg"><h3>'+esc(q.t)+' <span style="font-weight:400;color:#64748b">('+n(tot)+' respostas)</span></h3>';
+    q.o.forEach(function(o,oi){
+      var p=tot>0?c[oi]/tot*100:0;
+      h+='<div class="op"><span>'+esc(o)+'</span><div class="bar"><i style="width:'+p+'%"></i></div><b style="text-align:right">'+(tot>0?p.toFixed(0)+"%":"–")+'</b></div>';
+    });
+    h+='</div>';
+  });
+  $("resp").innerHTML=h;
+
+  /* por dia */
+  var t='<tr><th>Dia</th><th class="n">Abriram</th><th class="n">Terminaram</th><th class="n">% terminou</th><th class="n">Viram a venda</th><th class="n">Clicaram em comprar</th></tr>';
+  d.days.forEach(function(r){
+    var p=r.day.split("-");var dia=p[2]+"/"+p[1];
+    t+='<tr><td>'+dia+'</td><td class="n">'+n(r.c.view)+'</td><td class="n">'+n(r.c.a_7)+'</td><td class="n">'+pc(r.c.a_7||0,r.c.view||0)+'</td><td class="n">'+n(r.c.sales_view)+'</td><td class="n">'+n(r.c.buy_click)+'</td></tr>';
+  });
+  $("dia").innerHTML=t;
+}
+function card(a,b,c){return '<div class="card"><small>'+a+'</small><b>'+b+'</b><em>'+c+'</em></div>'}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+
+$("entrar").addEventListener("click",login);
+$("senha").addEventListener("keydown",function(e){if(e.key==="Enter")login()});
+$("atualizar").addEventListener("click",carregar);
+$("sair").addEventListener("click",sair);
+$("dias").addEventListener("change",carregar);
+$("src").addEventListener("change",carregar);
+if(pass())carregar();else $("login").hidden=false;
+</script>
+</body>
+</html>
